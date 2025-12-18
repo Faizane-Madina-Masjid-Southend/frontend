@@ -10,13 +10,8 @@
 
 .content-wrapper {
   width: 100%;
-  max-width: none;
-  margin: 0;
   padding: 0 3rem;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  /* Removed max-width/margin-auto so Logo stays pinned to the left edge */
 }
 
 .navbar-header {
@@ -37,24 +32,35 @@
   display: block;
 }
 
+/* --- 🖥️ LAPTOP LAYOUT (Default: Logo Left, Links Right) --- */
 @media (min-width: 769px) {
   .content-wrapper {
     display: grid;
-
+    /* 3 Columns: Left Space | Center Space | Right Space */
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
   }
 
   .navbar-header {
-    justify-self: start;
+    /* Logo stays in Column 1 (Far Left) */
     grid-column: 1;
+    justify-self: start;
   }
 
   .nav-links-container {
-    justify-self: center;
-    grid-column: 2;
+    /* On Laptops: Put links in Column 3 (Far Right) */
+    grid-column: 3;
+    justify-self: end;
+    display: block;
+  }
+}
 
-    flex-grow: 0;
+/* --- 🖥️ MONITOR LAYOUT (Logo Left, Links Centered) --- */
+@media (min-width: 1600px) {
+  /* When screen is huge, move links to the middle */
+  .nav-links-container {
+    grid-column: 2; /* Move to Column 2 (True Center) */
+    justify-self: center;
   }
 }
 
@@ -184,6 +190,8 @@
 /* --- MOBILE MENU OVERRIDES --- */
 @media (max-width: 768px) {
   .content-wrapper {
+    display: flex; /* Reset grid for mobile */
+    justify-content: space-between;
     padding: 0 1rem;
   }
 
@@ -227,7 +235,6 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  /* Mobile Dropdown Logic */
   .dropdown.open .dropdown-menu {
     display: block;
   }

@@ -31,7 +31,7 @@ const getIconForService = (title) => {
     case "Private Gatherings":
       return <FaHandsHelping />;
     default:
-      return null;
+      return <FaMosque />;
   }
 };
 

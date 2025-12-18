@@ -21,18 +21,26 @@ function Footer() {
   const mobilePrefix = "07427";
   const mobileNum = "665750";
 
+  // --- MAP LINK ---
+  // Using the exact link requested
+  const googleMapsUrl = "https://maps.app.goo.gl/pCwWinV9rmrPUWkh7";
+  const addressText = "53-55 Milton Road, Westcliff-on-Sea, SS0 7JP";
+
   return (
     <footer className="site-footer">
       <div className="footer-content">
         <div className="footer-section">
           <h4>Contact Us</h4>
           <ul className="contact-list">
+            {/* 1. Address Link (Clickable) */}
             <li>
               <FaMapMarkerAlt />
-              <span>53-55 Milton Road, Westcliff-on-Sea, SS0 7JP</span>
+              <a href={googleMapsUrl} target="_blank" rel="noopener noreferrer">
+                {addressText}
+              </a>
             </li>
 
-            {/* 1. Landline Obfuscation */}
+            {/* 2. Landline Obfuscation */}
             <li>
               <FaPhone />
               <a href={`tel:${landlineArea}${landlineNum}`}>
@@ -40,7 +48,7 @@ function Footer() {
               </a>
             </li>
 
-            {/* 2. Mobile Obfuscation */}
+            {/* 3. Mobile Obfuscation */}
             <li>
               <FaMobileAlt />
               <a href={`tel:${mobilePrefix}${mobileNum}`}>
@@ -48,7 +56,7 @@ function Footer() {
               </a>
             </li>
 
-            {/* 3. Email Obfuscation */}
+            {/* 4. Email Obfuscation */}
             <li>
               <FaEnvelope />
               <a href={`mailto:${emailUser}@${emailDomain}`}>
@@ -56,6 +64,7 @@ function Footer() {
               </a>
             </li>
 
+            {/* 5. WhatsApp Link */}
             <li>
               <FaWhatsapp />
               <a
@@ -70,8 +79,8 @@ function Footer() {
         </div>
       </div>
       <div className="footer-copyright">
-        &copy; {currentYear} Faizane Madina Masjid Southend (Dawat-e-Islami).
-        All Rights Reserved.
+        © {currentYear} Faizane Madina Masjid Southend (Dawat-e-Islami). All
+        Rights Reserved.
       </div>
     </footer>
   );

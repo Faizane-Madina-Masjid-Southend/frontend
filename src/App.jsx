@@ -9,6 +9,7 @@ import Gallery from "./components/Gallery";
 import "./App.css";
 import Announcements from "./components/Announcements";
 import AboutUs from "./components/AboutUs";
+import RamadanCountdown from "./components/RamadanCountdown";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <section id="prayer-times" className="section prayer-section-wrapper">
           <PrayerTimes />
         </section>
+        <RamadanCountdown />
 
         <section id="services" className="section">
           <Services />

@@ -15,8 +15,8 @@
   color: var(--color-primary-dark);
   text-align: center;
   margin-bottom: var(--spacing-lg);
-  font-size: 40px;
   font-family: "Merriweather", serif;
+  font-size: 32px;
 }
 
 .about-content-grid {
@@ -68,21 +68,44 @@
 .about-section p.about-text {
   color: var(--color-text);
   line-height: 1.7;
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  margin-bottom: 1.2rem;
 }
 
-@media (max-width: 768px) {
+/* --- LAPTOP (1024px - 1599px) --- */
+@media (min-width: 1024px) and (max-width: 1599px) {
   .about-section h2 {
-    font-size: 32px;
-  }
-
-  .about-text-content {
-    text-align: center;
+    font-size: 36px;
   }
 
   .about-section p.about-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .btn-about {
+    padding: 0.6rem 1.2rem;
     font-size: 0.9rem;
+  }
+}
+
+/* --- WIDE SCREEN RESTORE (1600px+) --- */
+@media (min-width: 1600px) {
+  .about-section h2 {
+    font-size: 40px;
+  }
+
+  .about-section p.about-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+}
+
+/* --- MOBILE--- */
+@media (max-width: 768px) {
+  .about-text-content {
+    text-align: center;
   }
 
   .about-image-wrapper {
@@ -90,11 +113,12 @@
   }
 
   .about-image {
-    max-width: 350px;
+    max-width: 300px;
     margin-top: 1rem;
   }
 }
 
+/* --- ANIMATIONS --- */
 .about-text-content,
 .about-image-wrapper {
   opacity: 0;
