@@ -46,7 +46,6 @@ function Gallery() {
     // This looks for the URL in both old and new Strapi structures
     const imageUrl = img.attributes?.url || img.url;
     return {
-      // FIX 1: We use the absolute URL directly from Cloudinary
       src: imageUrl,
       alt: "Gallery image",
     };
@@ -71,19 +70,14 @@ function Gallery() {
 
         <div className="gallery-grid">
           {galleryImages.map((img, idx) => {
-            // --- QUALITY FIX ---
-            // We grab the formats object first
             const formats = img.attributes?.formats || img.formats || {};
 
-            // We prioritize 'small' (crisp but fast).
-            // If 'small' doesn't exist, we try 'medium', then 'thumbnail', then original.
             const thumbnailUrl =
               formats.small?.url ||
               formats.medium?.url ||
               formats.thumbnail?.url ||
               img.attributes?.url ||
               img.url;
-            // -------------------
 
             return (
               <div

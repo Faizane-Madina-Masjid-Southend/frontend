@@ -1,6 +1,7 @@
 import React from "react";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 import "./Donate.css";
+import RamadanChallenge from "./RamadanChallenge";
 
 function Donate() {
   const oneOffDonateLink = "https://buy.stripe.com/4gw17937vcSEg3maEO";
@@ -60,6 +61,7 @@ function Donate() {
             <strong>43813160</strong>
           </div>
         </div>
+        <RamadanChallenge />
       </div>
     </section>
   );

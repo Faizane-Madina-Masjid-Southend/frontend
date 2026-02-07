@@ -27,6 +27,7 @@
   margin-bottom: 2rem;
 }
 
+/* --- STANDARD DONATE BUTTONS --- */
 .donate-section-button {
   background-color: var(--color-gold-heading);
   color: var(--color-cta-text);
@@ -36,25 +37,23 @@
   padding: 1rem 2.5rem;
   border-radius: var(--border-radius-md);
   text-decoration: none;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
   box-shadow: var(--shadow-md);
 
   flex-grow: 1;
   flex-basis: 200px;
   text-align: center;
+  border: 2px solid transparent;
 }
 
 .donate-section-button:hover {
   background-color: rgba(255, 193, 7, 0.1);
-  border: 2px solid var(--color-cta);
+  border-color: var(--color-cta);
   color: var(--color-cta);
   transform: translateY(-3px);
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.2);
-
-  border: 2px solid transparent;
-}
-.donate-section-button:hover {
-  border-color: var(--color-cta);
 }
 
 .separator {
@@ -131,7 +130,9 @@
 .animate-item {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
+  transition:
+    opacity 1s ease-out,
+    transform 1s ease-out;
 }
 
 .donate-section.is-visible .animate-item {
@@ -158,36 +159,270 @@
   transition-delay: 0.6s;
 }
 
+/* ... (Keep your top section: .donate-section, .bank-details, etc. same as before) ... */
+
+/* =========================================
+   🌙 RAMADAN CHALLENGE SECTION (Premium Night Theme)
+   ========================================= */
+
+.ramadan-challenge-container {
+  margin-top: 4rem;
+  width: 100%;
+  max-width: 900px;
+  padding: 2.5rem;
+
+  /* Layout */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+
+  /* Premium Background Style */
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(21, 51, 35, 0.6) 50%,
+    rgba(251, 191, 36, 0.1) 100%
+  );
+  border: 1px solid rgba(251, 191, 36, 0.3); /* Gold border */
+  border-radius: 24px;
+
+  /* Deep Shadow */
+  box-shadow:
+    0 20px 40px -10px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  position: relative;
+  overflow: hidden;
+
+  /* Prepare for Animation */
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
+}
+
+/* Texture Overlay */
+.ramadan-challenge-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(
+    rgba(251, 191, 36, 0.2) 1px,
+    transparent 1px
+  );
+  background-size: 30px 30px;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ensure content sits on top */
+.video-wrapper-native,
+.challenge-content {
+  z-index: 1;
+  position: relative;
+
+  /* Prepare Children for Animation */
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
+}
+
+/* --- Left Side: Video --- */
+.video-wrapper-native {
+  flex-shrink: 0;
+  width: 200px;
+}
+
+.challenge-video {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 9 / 16;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  background-color: #000;
+  display: block;
+}
+
+/* --- Right Side: Content --- */
+.challenge-content {
+  text-align: left;
+  flex: 1;
+}
+
+.challenge-header h3 {
+  color: #fbbf24;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+/* Paragraph Styling (Matches your 3 paragraphs) */
+.challenge-header p {
+  color: #e2e8f0;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.challenge-header p strong {
+  color: #fbbf24; /* Make bold text Gold */
+  font-weight: 700;
+}
+
+/* --- CTA Button --- */
+.challenge-cta {
+  margin-top: 1.5rem;
+}
+
+.challenge-button {
+  background-color: var(--color-gold-heading);
+  color: var(--color-cta-text);
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 1rem 2.5rem;
+  border-radius: var(--border-radius-md);
+  text-decoration: none;
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  border: 2px solid transparent;
+}
+
+.challenge-button:hover {
+  background-color: rgba(255, 193, 7, 0.1);
+  border-color: var(--color-cta);
+  color: var(--color-cta);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.2);
+}
+
+/* =========================================
+   ⚡ ANIMATION TRIGGER (Cascading)
+   ========================================= */
+
+/* 1. Show Main Card */
+.donate-section.is-visible .ramadan-challenge-container.animate-item {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.6s; /* Wait for bank details to finish */
+}
+
+/* 2. Show Video */
+.donate-section.is-visible .ramadan-challenge-container .video-wrapper-native {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.8s;
+}
+
+/* 3. Show Text */
+.donate-section.is-visible .ramadan-challenge-container .challenge-content {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 1s;
+}
+
+/* =========================================
+   📱 MOBILE RESPONSIVENESS
+   ========================================= */
+@media (max-width: 768px) {
+  .ramadan-challenge-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .video-wrapper-native {
+    width: 100%;
+    max-width: 240px;
+  }
+
+  .challenge-content {
+    text-align: center;
+  }
+
+  .challenge-header p {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .challenge-cta {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+   ========================================= */
+@media (max-width: 768px) {
+  .ramadan-challenge-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .video-wrapper-native {
+    width: 100%;
+    max-width: 240px;
+  }
+
+  .challenge-content {
+    text-align: center;
+  }
+
+  .challenge-cta {
+    align-items: center;
+  }
+
+  .tiny-note {
+    margin-left: 0;
+  }
+}
+
 /* --- MONITOR OVERRIDE (1600px+) --- */
 @media (min-width: 1600px) {
   .donate-section h2 {
     font-size: 3rem;
     margin-bottom: 2.5rem;
   }
-
   .donate-section p {
     font-size: 1.25rem;
     max-width: 800px;
   }
-
   .bank-details {
     padding: 2.5rem 4rem;
     max-width: 900px;
     margin: 0 auto;
   }
-
   .detail-item {
     padding: 1.5rem 0;
   }
-
   .detail-item strong {
     font-size: 1.3rem;
   }
-
   .detail-item span {
     font-size: 1.1rem;
   }
-
   .donate-section-button {
     font-size: 1.2rem;
     padding: 1.2rem 3rem;

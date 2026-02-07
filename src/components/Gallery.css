@@ -67,11 +67,10 @@
   --yarl-backdrop-color: rgba(0, 0, 0, 0.85);
 }
 
-/* --- 💻 LAPTOP / DESKTOP (Standard) --- */
+/* --- LAPTOP / DESKTOP (Standard) --- */
 @media (min-width: 768px) {
   .gallery-grid {
     display: grid;
-    /* CHANGE: Reduced to 250px to ensure 4 columns fit on 13" screens */
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     overflow-x: visible;
     padding: 0;
@@ -85,7 +84,7 @@
   }
 }
 
-/* --- 🖥️ WIDE MONITOR OVERRIDE (1600px+) --- */
+/* --- WIDE MONITOR OVERRIDE (1600px+) --- */
 @media (min-width: 1600px) {
   .gallery-wrapper {
     max-width: 1600px;
@@ -98,7 +97,6 @@
   }
 
   .gallery-grid {
-    /* Keep 320px here so images are larger on big screens */
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
   }

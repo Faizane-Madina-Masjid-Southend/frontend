@@ -1,18 +1,30 @@
+/* 1. Container: Defines the height and centers content */
 .hero-section {
   position: relative;
-  height: 60vh;
-  min-height: 400px;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  height: 60vh; /* Preserved from your code */
+  min-height: 400px; /* Preserved from your code */
   display: flex;
   justify-content: center;
   align-items: center;
   color: var(--color-white);
   text-align: center;
   overflow: hidden;
+  /* Removed: background-image properties (now handled by <img> tag) */
 }
 
+/* 2. The New Image: Behaves exactly like background-size: cover */
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Crucial: prevents stretching */
+  z-index: 0; /* Bottom Layer */
+  pointer-events: none;
+}
+
+/* 3. The Overlay: Darkens the image so text is readable */
 .hero-section::after {
   content: "";
   position: absolute;
@@ -20,15 +32,19 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.6); /* Preserved opacity */
+  z-index: 1; /* Middle Layer (Above image, below text) */
 }
 
+/* 4. The Content: Sits on top of everything */
 .hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 2; /* Top Layer */
   padding: 0 var(--spacing-md);
   max-width: 800px;
 }
+
+/* --- TYPOGRAPHY (Cleaned up animations for speed) --- */
 
 .hero-subtitle {
   display: block;
@@ -37,6 +53,7 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 2px;
+  /* Removed: opacity: 0 and transform (Instant Paint for LCP) */
 }
 
 .hero-content h1 {
@@ -49,44 +66,42 @@
   margin-bottom: 1.5rem;
   position: relative;
   padding-bottom: 1.5rem;
+  /* Removed: opacity: 0 and transform (Instant Paint for LCP) */
 }
 
+/* The Gold Underline */
 .hero-content h1::after {
   content: "";
   position: absolute;
   bottom: 0;
   left: 50%;
-  transform: translateX(-50%) scaleX(0);
-  transform-origin: center;
+  transform: translateX(
+    -50%
+  ); /* Removed scaleX(0) so it's visible immediately */
   width: 80px;
   height: 3px;
   background-color: var(--color-gold-subheading);
 }
 
-.hero-subtitle,
-.hero-content h1 {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+/* --- OPTIONAL: CSS-Only Animation (Does not block LCP) --- */
+/* If you really want the fade-in, use this instead of JS classes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.hero-section.is-visible .hero-subtitle {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.2s;
+.hero-content h1,
+.hero-subtitle {
+  animation: fadeInUp 0.8s ease-out forwards;
 }
 
-.hero-section.is-visible .hero-content h1 {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.5s;
-}
-
-.hero-section.is-visible .hero-content h1::after {
-  transform: translateX(-50%) scaleX(1);
-  transition: transform 0.7s ease-out;
-  transition-delay: 0.9s;
-}
+/* --- MEDIA QUERIES (Preserved) --- */
 
 @media (max-width: 768px) {
   .hero-content h1 {

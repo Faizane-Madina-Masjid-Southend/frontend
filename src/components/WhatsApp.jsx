@@ -1,6 +1,6 @@
 import React from "react";
 import { FaWhatsapp } from "react-icons/fa";
-import whatsappGraphic from "../assets/whatsapp.jpg";
+import whatsappGraphic from "../assets/whatsapp.webp";
 import "./WhatsApp.css";
 
 // 1. IMPORT THE HOOK

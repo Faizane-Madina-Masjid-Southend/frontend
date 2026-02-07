@@ -1,7 +1,7 @@
 import React from "react";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 import "./AboutUs.css";
-import aboutImage from "../assets/dawat-e-islami uk.png";
+import aboutImage from "../assets/dawat-e-islami uk.webp";
 
 function AboutUs() {
   const [sectionRef, isVisible] = useIntersectionObserver({ threshold: 0.1 });
@@ -53,7 +53,7 @@ function AboutUs() {
               rel="noopener noreferrer"
               className="btn btn-about"
             >
-              Learn More
+              Learn More <span className="sr-only">about Dawat-e-Islami</span>
             </a>
           </div>
         </div>

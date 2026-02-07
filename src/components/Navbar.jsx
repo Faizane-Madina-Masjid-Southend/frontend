@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import fullLogo from "../assets/website-logo.png";
+import fullLogo from "../assets/website-logo.webp";
 import { FaAngleDown } from "react-icons/fa";
 import "./Navbar.css";
 

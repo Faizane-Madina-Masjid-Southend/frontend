@@ -6,13 +6,24 @@
   box-shadow: 0 10px 25px rgba(4, 120, 87, 0.2);
   position: relative;
   overflow: hidden;
-  margin: 250px;
-  margin-top: 20px;
-  margin-bottom: 150px;
   border-radius: 35px;
+
+  /* 1. STABILITY FIX: Reserve height so it doesn't "pop" open */
+  min-height: 450px;
+
+  /* 2. MARGIN FIX: Use specific margins, NOT 'margin: 250px' */
+  margin: 4rem auto; /* Top/Bottom 4rem, Center horizontally */
+  max-width: 1200px; /* Prevent it from getting too wide */
+  width: 90%; /* Responsive width */
+
   opacity: 0;
   transform: translateY(50px);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
+  /* Ensure content centers properly vertically */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .ramadan-container.is-visible {
@@ -23,6 +34,7 @@
 .ramadan-content {
   position: relative;
   z-index: 2;
+  width: 100%; /* Ensures text doesn't get squashed */
 }
 
 .ramadan-container::before {
@@ -126,6 +138,18 @@
 
 /* Mobile Responsiveness */
 @media (max-width: 600px) {
+  .ramadan-container {
+    margin: 0; /* Remove outer margin */
+    width: 100%; /* FIX: Override the desktop 90% width */
+    max-width: 100%; /* Ensure it doesn't exceed screen width */
+    border-radius: 0; /* Square corners */
+
+    /* Critical for performance/stability */
+    min-height: 400px;
+    margin-bottom: 4rem;
+    padding: 3rem 1rem;
+  }
+
   .timer-grid {
     gap: 0.5rem;
   }
@@ -141,9 +165,5 @@
   }
   .ramadan-header h2 {
     font-size: 1.8rem;
-  }
-  .ramadan-container {
-    margin: 0;
-    border-radius: 0;
   }
 }
