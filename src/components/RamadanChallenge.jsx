@@ -28,8 +28,8 @@ function RamadanChallenge() {
           </p>
 
           <p>
-            You choose which charity receives your £1 each day. It does not have
-            to be us.
+            You choose which charity receives your donation each day. It does
+            not have to be us.
           </p>
 
           <p>

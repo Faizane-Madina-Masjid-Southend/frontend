@@ -18,7 +18,9 @@
 
   opacity: 0;
   transform: translateY(50px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
 
   /* Ensure content centers properly vertically */
   display: flex;
@@ -146,7 +148,6 @@
 
     /* Critical for performance/stability */
     min-height: 400px;
-    margin-bottom: 4rem;
     padding: 3rem 1rem;
   }
 
