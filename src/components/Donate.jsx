@@ -61,7 +61,6 @@ function Donate() {
             <strong>43813160</strong>
           </div>
         </div>
-        <RamadanChallenge />
       </div>
     </section>
   );
