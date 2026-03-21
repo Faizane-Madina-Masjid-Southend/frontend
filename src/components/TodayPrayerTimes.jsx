@@ -45,9 +45,9 @@ function TodayPrayerTimes({ prayerData }) {
   const isFriday = now.getDay() === 5;
   const [islamicDate, setIslamicDate] = useState("");
 
-  // 1. Create a fake "yesterday" date just for the Islamic API
+ // 1. Create a fake "yesterday" date just for the Islamic API
   const adjustedDate = new Date(now);
-  adjustedDate.setDate(adjustedDate.getDate() - 1);
+    {/*adjustedDate.setDate(adjustedDate.getDate() - 1); */}
 
   // 2. Format that adjusted date for the API
   const apiDateString = `${adjustedDate.getDate()}-${adjustedDate.getMonth() + 1}-${adjustedDate.getFullYear()}`;
