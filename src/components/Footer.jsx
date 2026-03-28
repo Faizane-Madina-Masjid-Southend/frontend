@@ -79,8 +79,19 @@ function Footer() {
         </div>
       </div>
       <div className="footer-copyright">
-        © {currentYear} Faizane Madina Masjid Southend (Dawat-e-Islami). All
-        Rights Reserved.
+        <p>
+          © {currentYear} Faizane Madina Masjid Southend (Dawat-e-Islami). All Rights Reserved.
+        </p>
+        <p className="developer-credit">
+          Designed & Developed by{" "}
+          <a
+            href="https://yqwebstudio.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            YQ Web Studio
+          </a>
+        </p>
       </div>
     </footer>
   );
