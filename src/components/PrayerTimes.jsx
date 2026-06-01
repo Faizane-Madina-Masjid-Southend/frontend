@@ -3,6 +3,14 @@ import TodayPrayerTimes from "./TodayPrayerTimes";
 import AboutUs from "./AboutUs";
 import "./PrayerTimes.css";
 
+const TEXT = {
+  loading: "Loading...",
+  jummahTitle: "Jummah Salah",
+  firstJamaat: "1st Jamaat:",
+  secondJamaat: "2nd Jamaat:",
+  monthlyBtn: "View Monthly Timetable"
+};
+
 function PrayerTimes() {
   const [timetable, setTimetable] = useState(null);
   const [jummahTimes, setJummahTimes] = useState({
@@ -109,7 +117,7 @@ function PrayerTimes() {
   if (loading) {
     return (
       <div style={{ padding: "4rem", textAlign: "center", color: "#555" }}>
-        Loading...
+        {TEXT.loading}
       </div>
     );
   }
@@ -131,14 +139,14 @@ function PrayerTimes() {
 
           <div className="jummah-info-card">
             <div className="jummah-details">
-              <h4>Jummah Salah</h4>
+              <h4>{TEXT.jummahTitle}</h4>
               <div className="jummah-times">
                 <div className="j-time-row">
-                  <span className="j-label">1st Jamaat:</span>
+                  <span className="j-label">{TEXT.firstJamaat}</span>
                   <span className="j-time">{jummahTimes.j1}</span>
                 </div>
                 <div className="j-time-row">
-                  <span className="j-label">2nd Jamaat:</span>
+                  <span className="j-label">{TEXT.secondJamaat}</span>
                   <span className="j-time">{jummahTimes.j2}</span>
                 </div>
               </div>
@@ -153,7 +161,7 @@ function PrayerTimes() {
                 display: timetableFileUrl === "#" ? "none" : "inline-block",
               }}
             >
-              View Monthly Timetable
+              {TEXT.monthlyBtn}
             </a>
           </div>
         </div>

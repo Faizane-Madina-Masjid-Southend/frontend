@@ -1,6 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./RamadanCountdown.css";
 
+const TEXT = {
+  subtitle: "Prepare Your Heart",
+  title: "Ramadan Begins In",
+  disclaimer: "*Subject to moon sighting",
+  days: "Days",
+  hours: "Hours",
+  minutes: "Mins",
+  seconds: "Secs"
+};
+
 const RamadanCountdown = () => {
   const ramadanDate = new Date("February 18, 2026 17:20:00").getTime();
 
@@ -67,27 +77,27 @@ const RamadanCountdown = () => {
       <div className="ramadan-overlay">
         <div className="ramadan-content">
           <div className="ramadan-header">
-            <span className="sub-title">Prepare Your Heart</span>
-            <h2>Ramadan Begins In</h2>
-            <p className="disclaimer">*Subject to moon sighting</p>
+            <span className="sub-title">{TEXT.subtitle}</span>
+            <h2>{TEXT.title}</h2>
+            <p className="disclaimer">{TEXT.disclaimer}</p>
           </div>
 
           <div className="timer-grid">
             <div className="timer-box">
               <span className="number">{timeLeft.days}</span>
-              <span className="label">Days</span>
+              <span className="label">{TEXT.days}</span>
             </div>
             <div className="timer-box">
               <span className="number">{timeLeft.hours}</span>
-              <span className="label">Hours</span>
+              <span className="label">{TEXT.hours}</span>
             </div>
             <div className="timer-box">
               <span className="number">{timeLeft.minutes}</span>
-              <span className="label">Mins</span>
+              <span className="label">{TEXT.minutes}</span>
             </div>
             <div className="timer-box">
               <span className="number">{timeLeft.seconds}</span>
-              <span className="label">Secs</span>
+              <span className="label">{TEXT.seconds}</span>
             </div>
           </div>
         </div>

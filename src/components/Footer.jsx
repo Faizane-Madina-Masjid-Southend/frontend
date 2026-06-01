@@ -8,6 +8,17 @@ import {
 } from "react-icons/fa";
 import "./Footer.css";
 
+const TEXT = {
+  title: "Contact Us",
+  telLabel: " (Telephone)",
+  mobileLabel: " (Mobile)",
+  whatsappLink: "Join our WhatsApp Group",
+  copyrightPrefix: "© ",
+  copyrightSuffix: " Faizane Madina Masjid Southend (Dawat-e-Islami). All Rights Reserved.",
+  devCredit: "Designed & Developed by ",
+  devName: "YQ Web Studio"
+};
+
 function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -30,7 +41,7 @@ function Footer() {
     <footer className="site-footer">
       <div className="footer-content">
         <div className="footer-section">
-          <h4>Contact Us</h4>
+          <h4>{TEXT.title}</h4>
           <ul className="contact-list">
             {/* 1. Address Link (Clickable) */}
             <li>
@@ -44,7 +55,7 @@ function Footer() {
             <li>
               <FaPhone />
               <a href={`tel:${landlineArea}${landlineNum}`}>
-                {landlineArea} {landlineNum} (Telephone)
+                {landlineArea} {landlineNum}{TEXT.telLabel}
               </a>
             </li>
 
@@ -52,7 +63,7 @@ function Footer() {
             <li>
               <FaMobileAlt />
               <a href={`tel:${mobilePrefix}${mobileNum}`}>
-                {mobilePrefix} {mobileNum} (Mobile)
+                {mobilePrefix} {mobileNum}{TEXT.mobileLabel}
               </a>
             </li>
 
@@ -72,7 +83,7 @@ function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Join our WhatsApp Group
+                {TEXT.whatsappLink}
               </a>
             </li>
           </ul>
@@ -80,16 +91,16 @@ function Footer() {
       </div>
       <div className="footer-copyright">
         <p>
-          © {currentYear} Faizane Madina Masjid Southend (Dawat-e-Islami). All Rights Reserved.
+          {TEXT.copyrightPrefix}{currentYear}{TEXT.copyrightSuffix}
         </p>
         <p className="developer-credit">
-          Designed & Developed by{" "}
+          {TEXT.devCredit}
           <a
             href="https://yqwebstudio.com"
             target="_blank"
             rel="noopener noreferrer"
           >
-            YQ Web Studio
+            {TEXT.devName}
           </a>
         </p>
       </div>

@@ -13,10 +13,14 @@ const Donate = lazy(() => import("./components/Donate"));
 const Gallery = lazy(() => import("./components/Gallery"));
 const Footer = lazy(() => import("./components/Footer"));
 
+const TEXT = {
+  loading: "Loading..."
+};
+
 // A placeholder for the bottom sections
 const SectionLoader = () => (
   <div style={{ padding: "4rem 0", textAlign: "center", color: "#047857" }}>
-    <div className="loader">Loading...</div>
+    <div className="loader">{TEXT.loading}</div>
   </div>
 );
 

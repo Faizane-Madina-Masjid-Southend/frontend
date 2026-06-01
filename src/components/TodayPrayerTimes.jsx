@@ -3,6 +3,16 @@ import { FaMoon, FaSun } from "react-icons/fa";
 import { FiSunset, FiSun } from "react-icons/fi";
 import "./TodayPrayerTimes.css";
 
+const TEXT = {
+  islamicDateUnavailable: "Islamic date unavailable",
+  unavailable: "Today's prayer times are unavailable. Please try again later.",
+  tomorrow: " (Tomorrow)",
+  inLabel: " in:",
+  finished: "All prayers for today finished.",
+  start: "Start",
+  jamaat: "Jamaat"
+};
+
 const createDateFromTimeString = (timeString, prayerName) => {
   if (!timeString || typeof timeString !== "string" || timeString.trim() === "")
     return null;
@@ -45,9 +55,9 @@ function TodayPrayerTimes({ prayerData }) {
   const isFriday = now.getDay() === 5;
   const [islamicDate, setIslamicDate] = useState("");
 
- // 1. Create a fake "yesterday" date just for the Islamic API
+  // 1. Create a fake "yesterday" date just for the Islamic API
   const adjustedDate = new Date(now);
-    {/*adjustedDate.setDate(adjustedDate.getDate() - 1); */}
+  {/*adjustedDate.setDate(adjustedDate.getDate() - 1); */}
 
   // 2. Format that adjusted date for the API
   const apiDateString = `${adjustedDate.getDate()}-${adjustedDate.getMonth() + 1}-${adjustedDate.getFullYear()}`;
@@ -71,11 +81,11 @@ function TodayPrayerTimes({ prayerData }) {
           setIslamicDate(`${hijri.day} ${hijri.month.en} ${hijri.year}`);
         } else {
           console.warn("Could not retrieve Islamic date:", islamicDateApiData);
-          setIslamicDate("Islamic date unavailable");
+          setIslamicDate(TEXT.islamicDateUnavailable);
         }
       } catch (e) {
         console.error("Failed to fetch Islamic date:", e);
-        setIslamicDate("Islamic date unavailable");
+        setIslamicDate(TEXT.islamicDateUnavailable);
       }
     }
     fetchIslamicDate();
@@ -101,7 +111,7 @@ function TodayPrayerTimes({ prayerData }) {
   if (!prayerData || !todaysTimes) {
     mainContent = (
       <div className="placeholder-message">
-        <p>Today's prayer times are unavailable. Please try again later.</p>
+        <p>{TEXT.unavailable}</p>
       </div>
     );
   } else {
@@ -126,7 +136,7 @@ function TodayPrayerTimes({ prayerData }) {
               },
             ]),
         { name: "Asr", type: "Start", time: todaysTimes.asr?.start },
-        { name: "Asr", type: "Jamaat", time: todaysTimes.asr?.jamaat },
+        { name: "Asr", type: "Keep", time: todaysTimes.asr?.jamaat },
         { name: "Maghrib", type: "Start", time: todaysTimes.maghrib?.start },
         { name: "Isha", type: "Start", time: todaysTimes.isha?.start },
         { name: "Isha", type: "Jamaat", time: todaysTimes.isha?.jamaat },
@@ -184,9 +194,7 @@ function TodayPrayerTimes({ prayerData }) {
         name: isFriday ? "Jummah" : "Dhuhar",
         icon: <FaSun />,
         ...todaysTimes.dhuhar,
-        jamaat: isFriday
-          ? todaysTimes.dhuhar?.jamaat
-          : todaysTimes.dhuhar?.jamaat,
+        jamaat: todaysTimes.dhuhar?.jamaat,
       },
       { name: "Asr", icon: <FiSun />, ...todaysTimes.asr },
       {
@@ -206,7 +214,7 @@ function TodayPrayerTimes({ prayerData }) {
               <p>
                 {nextPrayer.name}{" "}
                 {nextPrayer.type.replace("Start", "").replace("Event", "")}
-                {nextPrayer.isTomorrow ? " (Tomorrow)" : ""} in:
+                {nextPrayer.isTomorrow ? TEXT.tomorrow : ""}{TEXT.inLabel}
               </p>{" "}
               <div className="countdown-timer">
                 <span>{formatTime(countdown.hours)}</span>:
@@ -215,7 +223,7 @@ function TodayPrayerTimes({ prayerData }) {
               </div>
             </>
           ) : (
-            <p>All prayers for today finished.</p>
+            <p>{TEXT.finished}</p>
           )}
         </div>
 
@@ -238,13 +246,13 @@ function TodayPrayerTimes({ prayerData }) {
               </div>
               <div className="prayer-times">
                 <div className="time-block">
-                  <span className="time-label">Start</span>
+                  <span className="time-label">{TEXT.start}</span>
                   <span className="time-value">
                     {formatTo24HourDisplay(prayer.start, prayer.name)}
                   </span>
                 </div>
                 <div className="time-block">
-                  <span className="time-label">Jamaat</span>
+                  <span className="time-label">{TEXT.jamaat}</span>
                   <span className="time-value">
                     {isFriday &&
                     prayer.name === "Jummah" &&

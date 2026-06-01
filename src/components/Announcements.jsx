@@ -27,6 +27,16 @@ function getCaption(img) {
   return img?.attributes?.caption || img?.caption || undefined;
 }
 
+const TEXT = {
+  title: "Announcements",
+  noDate: "No Date",
+  previous: "Previous",
+  pagePrefix: "Page",
+  pageOf: "of",
+  next: "Next",
+  noAnnouncements: "There are no new announcements at this time."
+};
+
 function Announcements() {
   // All announcements fetched once
   const [allAnnouncements, setAllAnnouncements] = useState([]);
@@ -94,7 +104,7 @@ function Announcements() {
       ref={sectionRef}
     >
       <div className="announcements-content-wrapper">
-        <h2>Announcements</h2>
+        <h2>{TEXT.title}</h2>
 
         {allAnnouncements.length > 0 ? (
           <div className="announcements-container">
@@ -118,7 +128,7 @@ function Announcements() {
                           </span>
                         </>
                       ) : (
-                        <span>No Date</span>
+                        <span>{TEXT.noDate}</span>
                       )}
                     </div>
 
@@ -155,11 +165,11 @@ function Announcements() {
                 disabled={safePage === 1}
               >
                 <FaArrowLeft />
-                <span>Previous</span>
+                <span>{TEXT.previous}</span>
               </button>
 
               <span className="pagination-status">
-                Page {safePage} of {totalPages}
+                {TEXT.pagePrefix} {safePage} {TEXT.pageOf} {totalPages}
               </span>
 
               <button
@@ -167,14 +177,14 @@ function Announcements() {
                 onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
                 disabled={safePage === totalPages}
               >
-                <span>Next</span>
+                <span>{TEXT.next}</span>
                 <FaArrowRight />
               </button>
             </div>
           </div>
         ) : (
           <p className="no-announcements-message">
-            There are no new announcements at this time.
+            {TEXT.noAnnouncements}
           </p>
         )}
 

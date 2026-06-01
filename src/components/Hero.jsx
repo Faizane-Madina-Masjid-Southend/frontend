@@ -1,6 +1,11 @@
 import React from "react";
 import "./Hero.css";
 
+const TEXT = {
+  welcome: "Welcome to",
+  title: "Faizane Madina Masjid Southend"
+};
+
 function Hero() {
   return (
     <section className="hero-section">
@@ -8,7 +13,7 @@ function Hero() {
         src="banner.webp"
         srcSet="banner-small.webp 600w, banner-medium.webp 850w, banner.webp 1260w"
         sizes="(max-width: 600px) 100vw, (max-width: 900px) 100vw, 100vw"
-        alt="Faizane Madina Masjid Southend"
+        alt={TEXT.title}
         className="hero-bg"
         fetchPriority="high"
         decoding="async"
@@ -17,8 +22,8 @@ function Hero() {
       />
 
       <div className="hero-content">
-        <span className="hero-subtitle">Welcome to</span>
-        <h1>Faizane Madina Masjid Southend</h1>
+        <span className="hero-subtitle">{TEXT.welcome}</span>
+        <h1>{TEXT.title}</h1>
       </div>
     </section>
   );

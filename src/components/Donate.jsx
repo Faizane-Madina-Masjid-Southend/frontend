@@ -3,6 +3,22 @@ import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 import "./Donate.css";
 import RamadanChallenge from "./RamadanChallenge";
 
+const TEXT = {
+  title: "Support Your Masjid",
+  description: "Your generous donations help us maintain the mosque and support our community. May Allah (SWT) reward you for your contribution.",
+  refNote: 'Please include "Southend" in your donation reference.',
+  oneOffBtn: "Make a One-Off Donation",
+  standingOrderBtn: "Set Up Standing Order",
+  orSeparator: "OR",
+  bankTransferTitle: "Donate via Bank Transfer",
+  accountNameLabel: "Account Name",
+  accountNameVal: "DAWAT ISLAMI UK",
+  sortCodeLabel: "Sort Code",
+  sortCodeVal: "30-97-73",
+  accountNumLabel: "Account Number",
+  accountNumVal: "43813160"
+};
+
 function Donate() {
   const oneOffDonateLink = "https://buy.stripe.com/4gw17937vcSEg3maEO";
   const standingOrderLink = "https://buy.stripe.com/9AQ035fUhg4Qg3m3cj";
@@ -16,13 +32,12 @@ function Donate() {
       ref={sectionRef}
     >
       <div className="donate-content">
-        <h2 className="animate-item">Support Your Masjid</h2>
+        <h2 className="animate-item">{TEXT.title}</h2>
         <p className="animate-item">
-          Your generous donations help us maintain the mosque and support our
-          community. May Allah (SWT) reward you for your contribution.
+          {TEXT.description}
         </p>
         <p className="animate-item">
-          Please include "Southend" in your donation reference.
+          {TEXT.refNote}
         </p>
 
         <div className="donate-buttons-group animate-item">
@@ -32,7 +47,7 @@ function Donate() {
             rel="noopener noreferrer"
             className="donate-section-button"
           >
-            Make a One-Off Donation
+            {TEXT.oneOffBtn}
           </a>
           <a
             href={standingOrderLink}
@@ -40,25 +55,25 @@ function Donate() {
             rel="noopener noreferrer"
             className="donate-section-button secondary"
           >
-            Set Up Standing Order
+            {TEXT.standingOrderBtn}
           </a>
         </div>
 
-        <div className="separator animate-item">OR</div>
+        <div className="separator animate-item">{TEXT.orSeparator}</div>
 
         <div className="bank-details animate-item">
-          <h3>Donate via Bank Transfer</h3>
+          <h3>{TEXT.bankTransferTitle}</h3>
           <div className="detail-item">
-            <span>Account Name</span>
-            <strong>DAWAT ISLAMI UK</strong>
+            <span>{TEXT.accountNameLabel}</span>
+            <strong>{TEXT.accountNameVal}</strong>
           </div>
           <div className="detail-item">
-            <span>Sort Code</span>
-            <strong>30-97-73</strong>
+            <span>{TEXT.sortCodeLabel}</span>
+            <strong>{TEXT.sortCodeVal}</strong>
           </div>
           <div className="detail-item">
-            <span>Account Number</span>
-            <strong>43813160</strong>
+            <span>{TEXT.accountNumLabel}</span>
+            <strong>{TEXT.accountNumVal}</strong>
           </div>
         </div>
       </div>

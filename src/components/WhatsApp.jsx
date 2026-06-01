@@ -6,6 +6,13 @@ import "./WhatsApp.css";
 // 1. IMPORT THE HOOK
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 
+const TEXT = {
+  imageAlt: "Stay Connected on WhatsApp",
+  title: "Stay Connected",
+  description: "Join our WhatsApp group to stay up to date with the latest announcements and events.",
+  button: "Join Now"
+};
+
 function WhatsApp() {
   const WHATSAPP_GROUP_LINK =
     "https://chat.whatsapp.com/JSjCIBk2jkr9rnlaHONDO1?mode=wwt";
@@ -21,16 +28,13 @@ function WhatsApp() {
     >
       {/* Column 1: The Image */}
       <div className="whatsapp-image-container">
-        <img src={whatsappGraphic} alt="Stay Connected on WhatsApp" />
+        <img src={whatsappGraphic} alt={TEXT.imageAlt} />
       </div>
 
       {/* Column 2: The Content */}
       <div className="whatsapp-content">
-        <h3>Stay Connected</h3>
-        <p>
-          Join our WhatsApp group to stay up to date with the latest
-          announcements and events.
-        </p>
+        <h3>{TEXT.title}</h3>
+        <p>{TEXT.description}</p>
         <a
           href={WHATSAPP_GROUP_LINK}
           className="whatsapp-button"
@@ -38,7 +42,7 @@ function WhatsApp() {
           rel="noopener noreferrer"
         >
           <FaWhatsapp />
-          <span>Join Now</span>
+          <span>{TEXT.button}</span>
         </a>
       </div>
     </div>

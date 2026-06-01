@@ -6,6 +6,22 @@ import "./Navbar.css";
 const WHATSAPP_GROUP_LINK =
   "https://chat.whatsapp.com/JSjCIBk2jkr9rnlaHONDO1?mode=wwt";
 
+const TEXT = {
+  logoAlt: "Faizan-e-Madina Southend Logo",
+  menu: "Menu",
+  home: "Home",
+  aboutToggle: "About",
+  prayerTimetable: "Prayer Timetable",
+  aboutUs: "About Us",
+  services: "Services",
+  announcementsToggle: "Announcements",
+  latestNews: "Latest News",
+  joinWhatsAppGroup: "Join WhatsApp Group",
+  donate: "Donate",
+  gallery: "Gallery",
+  contact: "Contact"
+};
+
 function Navbar() {
   const [isNavVisible, setIsNavVisible] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -44,7 +60,7 @@ function Navbar() {
           <a href="#home" className="navbar-brand-link" onClick={closeAllMenus}>
             <img
               src={fullLogo}
-              alt="Faizan-e-Madina Southend Logo"
+              alt={TEXT.logoAlt}
               className="navbar-brand-image"
             />
           </a>
@@ -60,7 +76,7 @@ function Navbar() {
             setActiveDropdown(null);
           }}
         >
-          <span className="sr-only">Menu</span>
+          <span className="sr-only">{TEXT.menu}</span>
         </button>
 
         {/* LINKS SECTION */}
@@ -68,7 +84,7 @@ function Navbar() {
           <ul id="primary-navigation" className="nav-links">
             <li>
               <a href="#home" onClick={closeAllMenus}>
-                Home
+                {TEXT.home}
               </a>
             </li>
 
@@ -85,22 +101,22 @@ function Navbar() {
                 className="dropdown-toggle"
                 onClick={(e) => handleParentClick(e, "about")}
               >
-                About <FaAngleDown className="caret-icon" />
+                {TEXT.aboutToggle} <FaAngleDown className="caret-icon" />
               </a>
               <ul className="dropdown-menu">
                 <li>
                   <a href="#prayer-times" onClick={closeAllMenus}>
-                    Prayer Timetable
+                    {TEXT.prayerTimetable}
                   </a>
                 </li>
                 <li>
                   <a href="#about-us" onClick={closeAllMenus}>
-                    About Us
+                    {TEXT.aboutUs}
                   </a>
                 </li>
                 <li>
                   <a href="#services" onClick={closeAllMenus}>
-                    Services
+                    {TEXT.services}
                   </a>
                 </li>
               </ul>
@@ -121,12 +137,12 @@ function Navbar() {
                 className="dropdown-toggle"
                 onClick={(e) => handleParentClick(e, "announcements")}
               >
-                Announcements <FaAngleDown className="caret-icon" />
+                {TEXT.announcementsToggle} <FaAngleDown className="caret-icon" />
               </a>
               <ul className="dropdown-menu">
                 <li>
                   <a href="#announcements" onClick={closeAllMenus}>
-                    Latest News
+                    {TEXT.latestNews}
                   </a>
                 </li>
                 <li>
@@ -136,7 +152,7 @@ function Navbar() {
                     rel="noopener noreferrer"
                     onClick={closeAllMenus}
                   >
-                    Join WhatsApp Group
+                    {TEXT.joinWhatsAppGroup}
                   </a>
                 </li>
               </ul>
@@ -144,17 +160,17 @@ function Navbar() {
 
             <li>
               <a href="#donate" onClick={closeAllMenus}>
-                Donate
+                {TEXT.donate}
               </a>
             </li>
             <li>
               <a href="#gallery" onClick={closeAllMenus}>
-                Gallery
+                {TEXT.gallery}
               </a>
             </li>
             <li>
               <a href="#footer" onClick={closeAllMenus}>
-                Contact
+                {TEXT.contact}
               </a>
             </li>
           </ul>

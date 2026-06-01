@@ -46,6 +46,13 @@ const getSortableTime = (timeString) => {
   return 9998;
 };
 
+const TEXT = {
+  loading: "Loading Services...",
+  title: "Our Services",
+  imageAlt: "Mosque service",
+  weeklyTitle: "Our Weekly Events"
+};
+
 function Services() {
   const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
@@ -127,7 +134,7 @@ function Services() {
           <h2
             style={{ color: "white", textAlign: "center", paddingTop: "5rem" }}
           >
-            Loading Services...
+            {TEXT.loading}
           </h2>
         </div>
       </div>
@@ -150,10 +157,10 @@ function Services() {
         }`}
         ref={heroRef}
       >
-        <h2>Our Services</h2>
+        <h2>{TEXT.title}</h2>
         <img
           src={servicesImage}
-          alt="Mosque service"
+          alt={TEXT.imageAlt}
           className="services-image"
         />
         <div className="services-slider-container">
@@ -199,7 +206,7 @@ function Services() {
         ref={calendarAnimRef}
       >
         <div className="weekly-events-header">
-          <h2>Our Weekly Events</h2>
+          <h2>{TEXT.weeklyTitle}</h2>
         </div>
 
         <div

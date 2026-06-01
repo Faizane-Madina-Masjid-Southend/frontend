@@ -12,6 +12,20 @@ const API_URL = import.meta.env.VITE_STRAPI_API_URL || "https://localhost:1337";
 
 const MAX_VISIBLE = 8;
 
+const TEXT = {
+  modalAriaLabel: "View all gallery images",
+  allPhotos: "All Photos",
+  closeAriaLabel: "Close gallery modal",
+  openImageAria: "Open image ",
+  imageAlt: "Gallery image ",
+  title: "Gallery",
+  loading: "Loading Gallery...",
+  openGalleryImageAria: "Open gallery image ",
+  thumbnailAlt: "Gallery thumbnail",
+  viewAllAriaLabel: "View all photos",
+  viewAll: "View All"
+};
+
 // ---------------------------------------------------------------------------
 // Helper: extract the best URL from a Strapi media object (v4 or v5)
 // ---------------------------------------------------------------------------
@@ -62,7 +76,7 @@ function GalleryModal({ images, onClose, onThumbnailClick }) {
       onClick={onClose}
       role="dialog"
       aria-modal="true"
-      aria-label="View all gallery images"
+      aria-label={TEXT.modalAriaLabel}
     >
       {/* Stop clicks on the inner panel from closing the modal */}
       <div
@@ -70,11 +84,11 @@ function GalleryModal({ images, onClose, onThumbnailClick }) {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="gallery-modal-header">
-          <h3>All Photos ({images.length})</h3>
+          <h3>{TEXT.allPhotos} ({images.length})</h3>
           <button
             className="gallery-modal-close"
             onClick={onClose}
-            aria-label="Close gallery modal"
+            aria-label={TEXT.closeAriaLabel}
           >
             &times;
           </button>
@@ -92,9 +106,9 @@ function GalleryModal({ images, onClose, onThumbnailClick }) {
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => e.key === "Enter" && onThumbnailClick(idx)}
-                aria-label={`Open image ${idx + 1}`}
+                aria-label={TEXT.openImageAria + (idx + 1)}
               >
-                <img src={thumb} alt={`Gallery image ${idx + 1}`} loading="lazy" />
+                <img src={thumb} alt={TEXT.imageAlt + (idx + 1)} loading="lazy" />
               </div>
             );
           })}
@@ -171,9 +185,9 @@ function Gallery() {
       ref={sectionRef}
     >
       <div className="gallery-wrapper">
-        <h2>Gallery</h2>
+        <h2>{TEXT.title}</h2>
 
-        {loading && <p className="gallery-loading">Loading Gallery...</p>}
+        {loading && <p className="gallery-loading">{TEXT.loading}</p>}
 
         {/* ---- Main 8-image grid ---- */}
         <div className="gallery-grid">
@@ -188,9 +202,9 @@ function Gallery() {
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => e.key === "Enter" && openLightbox(idx)}
-                aria-label={`Open gallery image ${idx + 1}`}
+                aria-label={TEXT.openGalleryImageAria + (idx + 1)}
               >
-                <img src={thumb} alt="Gallery thumbnail" loading="lazy" />
+                <img src={thumb} alt={TEXT.thumbnailAlt} loading="lazy" />
               </div>
             );
           })}
@@ -202,10 +216,10 @@ function Gallery() {
               role="button"
               tabIndex={0}
               onKeyDown={(e) => e.key === "Enter" && setModalOpen(true)}
-              aria-label="View all photos"
+              aria-label={TEXT.viewAllAriaLabel}
             >
               <div className="view-all-overlay">
-                <span>View All</span>
+                <span>{TEXT.viewAll}</span>
                 <span className="count">({galleryImages.length})</span>
               </div>
             </div>
