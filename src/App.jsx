@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 // Import Top-of-Page components normally to prevent Layout Shifts (CLS)
@@ -25,6 +25,23 @@ const SectionLoader = () => (
 );
 
 function App() {
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.self !== window.top) {
+      const blockNavigation = (e) => {
+        const target = e.target;
+        const link = target.closest("a");
+        if (link) {
+          e.preventDefault();
+          e.stopPropagation();
+          console.warn("Navigation is disabled in live portfolio preview mode.");
+        }
+      };
+
+      document.addEventListener("click", blockNavigation, true);
+      return () => document.removeEventListener("click", blockNavigation, true);
+    }
+  }, []);
+
   return (
     <div className="app">
       <Navbar />
