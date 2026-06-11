@@ -10,4 +10,9 @@ export default defineConfig({
       "Content-Security-Policy": "frame-ancestors 'self' https://yqwebstudio.com https://*.yqwebstudio.com;",
     },
   },
+  preview: {
+    headers: {
+      "Content-Security-Policy": "frame-ancestors 'self' https://yqwebstudio.com https://*.yqwebstudio.com;",
+    },
+  },
 });
